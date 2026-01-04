@@ -114,6 +114,8 @@ class CartController extends Controller
                     throw new \Exception("Product {$product->name} is out of stock.");
                 }
 
+                // To wywołanie automatycznie uruchomi zdarzenie 'saved' w modelu Product
+                // i jeśli stan spadnie < 10, wyśle maila.
                 $product->decrement('stock_quantity', $item->quantity);
 
                 OrderItem::create([
@@ -128,10 +130,8 @@ class CartController extends Controller
                     'quantity' => $item->quantity,
                     'price' => $product->price,
                 ];
-
-                if ($product->stock_quantity < 10) {
-                    SendLowStockNotification::dispatch($product);
-                }
+                
+                // USUNIĘTO RĘCZNE WYSYŁANIE POWIADOMIENIA - TERAZ ROBI TO MODEL
             }
 
             $user->cartItems()->delete();
