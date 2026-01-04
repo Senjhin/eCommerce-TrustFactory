@@ -52,6 +52,7 @@ Clone the project to your local machine:
 ```bash
 git clone [https://github.com/Senjhin/eCommerce-TrustFactory.git](https://github.com/Senjhin/eCommerce-TrustFactory.git)
 cd eCommerce-TrustFactory
+```
 
 ### 3. Install Dependencies
 
@@ -61,9 +62,11 @@ npm install
 cp .env.example .env
 php artisan key:generate
 php artisan migrate:fresh --seed
+```
 
 ### 4. Run application
-
+```bash
 composer run dev
+```
 
-Open http://localhost:8000 in your browser.
+### 5. Open http://localhost:8000 
